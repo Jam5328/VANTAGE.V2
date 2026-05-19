@@ -17,20 +17,21 @@ export default function Navbar() {
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         transparent
-          ? "bg-transparent border-b border-transparent"
+          ? "border-b border-transparent backdrop-blur-md"
           : "bg-background border-b border-border"
       }`}
+      style={transparent ? { backgroundColor: "rgba(13,13,42,0.35)" } : undefined}
     >
       <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-        <div className="flex items-center gap-3">
+        <div className="flex items-end gap-3">
           <img
             src="/src/assets/images/vantage-icon.png"
             alt="Vantage icon"
-            className="w-7 h-7 object-contain"
+            className="w-7 h-7 object-contain mb-0.5"
           />
           <Link
             href="/"
-            className={`font-serif text-lg tracking-[0.2em] uppercase transition-colors duration-300 ${
+            className={`font-serif text-lg tracking-[0.2em] uppercase transition-colors duration-300 leading-none ${
               transparent ? "text-white" : "text-foreground"
             }`}
           >

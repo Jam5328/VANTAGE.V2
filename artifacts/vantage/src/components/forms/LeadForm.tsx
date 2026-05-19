@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 
 const clientTypeOptions = [
   { value: "letting_agency", label: "Letting Agency" },
-  { value: "property_manager", label: "Property Manager" },
+  { value: "independent_landlord", label: "Independent Landlord" },
   { value: "serviced_accommodation", label: "Serviced Accommodation Operator" },
   { value: "airbnb_host", label: "Airbnb Host" },
   { value: "other", label: "Other" },
@@ -21,7 +21,7 @@ const leadFormSchema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().email("Valid email is required"),
   company: z.string().optional(),
-  clientType: z.enum(["letting_agency", "property_manager", "serviced_accommodation", "airbnb_host", "other"], {
+  clientType: z.enum(["letting_agency", "independent_landlord", "serviced_accommodation", "airbnb_host", "other"], {
     required_error: "Please select a client type",
   }),
   message: z.string().optional(),
@@ -39,7 +39,6 @@ export default function LeadForm() {
       name: "",
       email: "",
       company: "",
-      clientType: "letting_agency",
       message: "",
     },
   });
@@ -88,7 +87,7 @@ export default function LeadForm() {
               <FormItem>
                 <FormLabel>Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter your full name" data-testid="input-name" {...field} />
+                  <Input placeholder="Full name" data-testid="input-name" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -101,7 +100,7 @@ export default function LeadForm() {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter your email address" data-testid="input-email" {...field} />
+                  <Input placeholder="Email address" data-testid="input-email" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -115,9 +114,9 @@ export default function LeadForm() {
             name="company"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Company (Optional)</FormLabel>
+                <FormLabel>Organisation (Optional)</FormLabel>
                 <FormControl>
-                  <Input placeholder="Your organisation" data-testid="input-company" {...field} />
+                  <Input placeholder="Organization name" data-testid="input-company" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -129,10 +128,10 @@ export default function LeadForm() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Client Type</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <Select onValueChange={field.onChange} value={field.value ?? ""}>
                   <FormControl>
                     <SelectTrigger data-testid="select-client-type">
-                      <SelectValue placeholder="Select type" />
+                      <SelectValue placeholder="Please Select" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>

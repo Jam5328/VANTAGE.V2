@@ -5,6 +5,15 @@ import bristolAerial from "@/assets/images/bristol-aerial.jpg";
 import vantageIcon from "@/assets/images/vantage-icon.png";
 import LeadForm from "@/components/forms/LeadForm";
 
+const platformLogos = [
+  { name: "airbnb", style: "font-sans font-semibold tracking-tight text-lg" },
+  { name: "Rightmove", style: "font-sans font-bold tracking-tight text-lg" },
+  { name: "zoopla", style: "font-sans font-bold tracking-tight text-lg" },
+  { name: "Booking.com", style: "font-sans font-bold tracking-tight text-base" },
+  { name: "OpenRent", style: "font-sans font-semibold tracking-wide text-base" },
+  { name: "VRBO", style: "font-sans font-black tracking-widest text-base" },
+];
+
 export default function Home() {
   const heroRef = useRef<HTMLElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -69,7 +78,7 @@ export default function Home() {
               className="inline-flex h-11 sm:h-12 items-center justify-center gradient-bg text-white px-8 sm:px-10 text-sm font-medium tracking-wide transition-opacity hover:opacity-90"
               data-testid="link-book-call"
             >
-              Book a Call
+              Enquire
             </a>
             <Link
               href="/services"
@@ -84,12 +93,24 @@ export default function Home() {
 
       {/* Stats bar */}
       <section className="border-y border-white/10" style={{ backgroundColor: "#0D0D2A" }}>
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 md:divide-x divide-white/10">
+        <div className="max-w-6xl mx-auto px-6 py-12 md:py-14">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-0 md:divide-x divide-white/10">
             {[
-              { stat: "6", unit: "Years", label: "Direct property management and lettings agency experience" },
-              { stat: "100%", unit: "Audit-ready", label: "Documentation built to withstand DPS and Property Redress Scheme scrutiny" },
-              { stat: "24h", unit: "Turnaround", label: "Rapid delivery of inventory and inspection reporting" },
+              {
+                stat: "6+",
+                unit: "Years",
+                label: "Experience in property management, including lettings agency workflows, tenancy lifecycle oversight, and landlord reporting.",
+              },
+              {
+                stat: "100%",
+                unit: "Audit-ready",
+                label: "Structured inventory and inspection reporting designed to support dispute resolution processes and align with DPS and Property Redress Scheme standards.",
+              },
+              {
+                stat: "48h",
+                unit: "Turnaround",
+                label: "Reliable delivery of structured inventories, inspections and 360 documentation within 48 hours, depending on property size and scope.",
+              },
             ].map(({ stat, unit, label }, i) => (
               <motion.div
                 key={i}
@@ -97,10 +118,10 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="md:px-12 first:pl-0 last:pr-0 space-y-2"
+                className="md:px-12 first:pl-0 last:pr-0 space-y-3"
               >
                 <div className="flex items-baseline gap-2">
-                  <span className="text-5xl font-serif gradient-text">{stat}</span>
+                  <span className="text-4xl md:text-5xl font-serif gradient-text">{stat}</span>
                   <span className="text-xs font-medium uppercase tracking-widest text-white/40">{unit}</span>
                 </div>
                 <p className="text-sm text-white/50 font-light leading-relaxed">{label}</p>
@@ -110,37 +131,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Platforms — "Used across" */}
-      <section className="py-16 border-b border-white/10" style={{ backgroundColor: "#0D0D2A" }}>
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center space-y-10"
-          >
-            <p className="text-xs font-light uppercase tracking-[0.3em] text-white/30">
-              Used by clients operating across
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-14">
-              {[
-                { name: "airbnb", style: "font-sans font-semibold tracking-tight text-lg" },
-                { name: "Rightmove", style: "font-sans font-bold tracking-tight text-lg" },
-                { name: "zoopla", style: "font-sans font-bold tracking-tight text-lg" },
-                { name: "Booking.com", style: "font-sans font-bold tracking-tight text-base" },
-                { name: "OpenRent", style: "font-sans font-semibold tracking-wide text-base" },
-                { name: "VRBO", style: "font-sans font-black tracking-widest text-base" },
-              ].map(({ name, style }) => (
-                <span
-                  key={name}
-                  className={`${style} text-white/22 select-none`}
-                >
-                  {name}
-                </span>
-              ))}
-            </div>
-          </motion.div>
+      {/* Platforms — scrolling marquee */}
+      <section className="py-10 border-b border-white/10 overflow-hidden" style={{ backgroundColor: "#0D0D2A" }}>
+        <div className="max-w-6xl mx-auto px-6 mb-6">
+          <p className="text-xs font-light uppercase tracking-[0.3em] text-white/30 text-center">
+            Used by clients operating across
+          </p>
+        </div>
+        <div className="marquee-track group">
+          <div className="marquee-content group-hover:[animation-play-state:paused]">
+            {[...platformLogos, ...platformLogos].map(({ name, style }, i) => (
+              <span
+                key={i}
+                className={`${style} text-white/22 select-none shrink-0 px-10`}
+              >
+                {name}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -163,21 +171,21 @@ export default function Home() {
               {
                 heading: "For Letting Agencies",
                 items: [
-                  "Inconsistent inventory reporting across properties and branches.",
-                  "Disputes failing due to insufficient photographic or documented evidence.",
-                  "Inefficient check-in and check-out workflows consuming staff time.",
-                  "Fragmented documentation systems with no standardisation.",
-                  "Lack of uniformity across contractor-produced reports.",
+                  "Inconsistent inventory standards across properties, branches, and contractors, leading to unreliable reporting quality.",
+                  "Weak or incomplete documentation that fails to hold up during deposit disputes or claim processes.",
+                  "Time-heavy check-in and check-out workflows that are inconsistent across staff and locations.",
+                  "Lack of a unified reporting structure across externally produced inventories and inspections.",
+                  "Variation in report quality between contractors, creating compliance and liability risk.",
                 ],
               },
               {
-                heading: "For Landlords & SA Operators",
+                heading: "For Landlords & Serviced Accommodation Operators",
                 items: [
-                  "Damage disputes with no baseline condition evidence to refer to.",
-                  "Unclear property condition tracking across mid-tenancy periods.",
-                  "Poor quality listing visuals limiting platform conversion rates.",
-                  "Inefficient and reactive reporting processes.",
-                  "Reactive maintenance responses due to lack of documented evidence.",
+                  "Disputes arising from missing or incomplete baseline condition records at the start of tenancies.",
+                  "Limited visibility of property condition between inspections, leading to reactive rather than preventative maintenance.",
+                  "Underperforming listing visuals that fail to accurately represent property condition or appeal.",
+                  "Fragmented or inconsistent reporting across multiple properties or platforms.",
+                  "Delayed issue identification due to lack of structured, repeatable inspection data.",
                 ],
               },
             ].map(({ heading, items }, col) => (
@@ -355,12 +363,12 @@ export default function Home() {
               <p className="text-xs font-medium uppercase tracking-[0.25em] text-white/40">Get in Touch</p>
               <h2 className="text-3xl md:text-4xl font-serif text-white">Make an Enquiry</h2>
               <p className="text-sm text-white/55 font-light leading-relaxed max-w-sm">
-                Tell us about your portfolio and requirements. We will respond with a proposal tailored to your operation.
+                Provide details of your portfolio, property type, or requirements. We respond with a structured proposal aligned to your operational and documentation needs.
               </p>
               <div className="pt-4 space-y-3 text-sm text-white/45 font-light">
-                <p>Serving: Bristol & BS36 area</p>
-                <p>Turnaround: 24–48 hours</p>
-                <p>Agency packages available</p>
+                <p>Serving: Bristol & surrounding areas</p>
+                <p>Turnaround: 48 hours</p>
+                <p>Agency & portfolio packages available</p>
               </div>
             </motion.div>
 

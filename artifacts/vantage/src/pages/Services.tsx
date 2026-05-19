@@ -41,7 +41,7 @@ export default function Services() {
             transition={{ duration: 0.7 }}
             className="space-y-5"
           >
-            <p className="text-xs font-medium uppercase tracking-[0.25em] text-white/40">Our Capabilities</p>
+            <p className="text-xs font-medium uppercase tracking-[0.25em] gradient-text">Our Capabilities</p>
             <h1 className="text-4xl md:text-6xl font-serif text-white">Services</h1>
             <p className="text-lg text-white/55 font-light max-w-2xl leading-relaxed">
               Structured property documentation services designed to support landlords, letting agents and accommodation operators throughout the full tenancy lifecycle. From inventories and 360 walkthroughs to inspections, check-ins and check-outs, each service is built around clear reporting, reliable visual evidence and organised digital delivery.
@@ -116,7 +116,7 @@ export default function Services() {
         />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,13,42,0.96), rgba(22,22,63,0.75), rgba(13,13,42,0.3))" }} />
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center space-y-6">
-          <p className="text-xs font-medium uppercase tracking-[0.25em] text-white/50">Why it matters</p>
+          <p className="text-xs font-medium uppercase tracking-[0.25em] gradient-text">Why it matters</p>
           <h2 className="text-3xl md:text-4xl font-serif text-white leading-snug">
             Most deposit disputes are lost before they begin
           </h2>

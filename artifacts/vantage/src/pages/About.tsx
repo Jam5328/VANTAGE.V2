@@ -54,7 +54,7 @@ export default function About() {
             transition={{ duration: 0.7 }}
             className="space-y-5"
           >
-            <p className="text-xs font-medium uppercase tracking-[0.25em] text-white/40">The Operator</p>
+            <p className="text-xs font-medium uppercase tracking-[0.25em] gradient-text">The Operator</p>
             <h1 className="text-4xl md:text-6xl font-serif text-white">Operator Profile</h1>
             <p className="text-lg text-white/55 font-light max-w-2xl leading-relaxed">
               VANTAGE is founded on direct operational experience within the UK lettings and property management sector.
@@ -77,7 +77,7 @@ export default function About() {
                 className="grid md:grid-cols-12 gap-8 py-16 border-b border-white/10 last:border-0"
               >
                 <div className="md:col-span-3">
-                  <h3 className="text-xs font-medium uppercase tracking-widest text-white/40 pt-1">
+                  <h3 className="text-xs font-medium uppercase tracking-widest gradient-text pt-1">
                     {label}
                   </h3>
                 </div>
@@ -100,7 +100,7 @@ export default function About() {
       {/* CTA */}
       <section className="border-t border-white/10 py-20" style={{ backgroundColor: "#0D0D2A" }}>
         <div className="max-w-6xl mx-auto px-6 text-center space-y-6">
-          <h2 className="text-2xl md:text-3xl font-serif text-white">Ready to standardise your documentation?</h2>
+          <h2 className="text-2xl md:text-3xl font-serif text-white">Ready to bring structure to your property records?</h2>
           <p className="text-sm text-white/50 font-light">Contact us to discuss your portfolio requirements.</p>
           <a
             href="/#contact"
