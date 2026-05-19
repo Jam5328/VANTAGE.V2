@@ -19,7 +19,7 @@ export default function Navbar() {
           : "bg-white border-b border-border shadow-sm"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
 
         {/* Logo */}
         <div className="flex items-end gap-3">
