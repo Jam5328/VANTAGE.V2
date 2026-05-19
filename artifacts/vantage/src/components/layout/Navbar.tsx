@@ -11,44 +11,44 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const transparent = atTop;
-
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        transparent
-          ? "border-b border-transparent backdrop-blur-md"
-          : "bg-background border-b border-border"
+      className={`fixed top-0 z-50 w-full transition-all duration-400 ${
+        atTop
+          ? "bg-transparent border-b border-transparent"
+          : "bg-white border-b border-border shadow-sm"
       }`}
-      style={transparent ? { backgroundColor: "rgba(13,13,42,0.35)" } : undefined}
     >
       <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+
+        {/* Logo */}
         <div className="flex items-end gap-3">
           <img
             src="/src/assets/images/vantage-icon.png"
             alt="Vantage icon"
-            className="w-7 h-7 object-contain mb-0.5"
+            className="w-7 h-7 object-contain object-bottom"
           />
           <Link
             href="/"
-            className={`font-serif text-lg tracking-[0.2em] uppercase transition-colors duration-300 leading-none ${
-              transparent ? "text-white" : "text-foreground"
+            className={`font-serif text-lg tracking-[0.2em] uppercase transition-colors duration-300 leading-none pb-px ${
+              atTop ? "text-white" : "text-foreground"
             }`}
           >
             VANTAGE
           </Link>
         </div>
 
+        {/* Desktop nav */}
         <nav
           className={`hidden md:flex items-center gap-8 text-sm font-light tracking-wide transition-colors duration-300 ${
-            transparent ? "text-white/70" : "text-foreground/50"
+            atTop ? "text-white/70" : "text-foreground/50"
           }`}
         >
-          <Link href="/services" className={`transition-colors duration-200 hover:${transparent ? "text-white" : "text-foreground"}`}>Services</Link>
-          <Link href="/about" className={`transition-colors duration-200 hover:${transparent ? "text-white" : "text-foreground"}`}>About</Link>
-          <Link href="/pricing" className={`transition-colors duration-200 hover:${transparent ? "text-white" : "text-foreground"}`}>Pricing</Link>
+          <Link href="/services" className="transition-colors duration-200 hover:opacity-100">Services</Link>
+          <Link href="/about" className="transition-colors duration-200 hover:opacity-100">About</Link>
         </nav>
 
+        {/* Enquire CTA */}
         <div className="hidden md:flex items-center">
           <a
             href="/#contact"
@@ -59,8 +59,11 @@ export default function Navbar() {
           </a>
         </div>
 
+        {/* Mobile hamburger */}
         <button
-          className={`md:hidden transition-colors duration-300 ${transparent ? "text-white/70 hover:text-white" : "text-foreground/60 hover:text-foreground"}`}
+          className={`md:hidden transition-colors duration-300 ${
+            atTop ? "text-white/70 hover:text-white" : "text-foreground/60 hover:text-foreground"
+          }`}
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
           data-testid="button-mobile-menu"
@@ -73,11 +76,11 @@ export default function Navbar() {
         </button>
       </div>
 
+      {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t border-border px-6 py-6 space-y-4 bg-background">
+        <div className="md:hidden border-t border-border px-6 py-6 space-y-4 bg-white">
           <Link href="/services" className="block text-sm text-foreground/60 hover:text-foreground" onClick={() => setOpen(false)}>Services</Link>
           <Link href="/about" className="block text-sm text-foreground/60 hover:text-foreground" onClick={() => setOpen(false)}>About</Link>
-          <Link href="/pricing" className="block text-sm text-foreground/60 hover:text-foreground" onClick={() => setOpen(false)}>Pricing</Link>
           <a href="/#contact" className="block text-sm text-foreground/60 hover:text-foreground" onClick={() => setOpen(false)}>Enquire</a>
         </div>
       )}
