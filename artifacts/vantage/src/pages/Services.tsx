@@ -54,7 +54,7 @@ export default function Services() {
       </section>
 
       {/* Service list */}
-      <section className="py-16" style={{ backgroundColor: "#1E1F26" }}>
+      <section className="py-16" style={{ backgroundColor: "#16163F" }}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="space-y-0">
             {services.map((srv, i) => (

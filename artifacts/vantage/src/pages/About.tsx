@@ -64,7 +64,7 @@ export default function About() {
       </section>
 
       {/* Profile sections */}
-      <section className="py-16" style={{ backgroundColor: "#1E1F26" }}>
+      <section className="py-16" style={{ backgroundColor: "#16163F" }}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="space-y-0">
             {sections.map(({ label, items }, i) => (

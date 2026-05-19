@@ -31,9 +31,9 @@ export default function Home() {
             alt="Bristol residential properties"
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0D0E12]/70 via-[#1E1F26]/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D2A]/70 via-[#16163F]/30 to-transparent" />
           <div
-            className="absolute inset-0 bg-[#0D0E12] pointer-events-none transition-none"
+            className="absolute inset-0 bg-[#0D0D2A] pointer-events-none transition-none"
             style={{ opacity: scrollProgress * 0.65 }}
           />
         </div>
@@ -145,7 +145,7 @@ export default function Home() {
       </section>
 
       {/* Problems We Solve */}
-      <section className="py-24" style={{ backgroundColor: "#1E1F26" }}>
+      <section className="py-24" style={{ backgroundColor: "#16163F" }}>
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -246,7 +246,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: (i % 2) * 0.1 }}
                 className="p-10 space-y-4"
-                style={{ backgroundColor: "#1E1F26" }}
+                style={{ backgroundColor: "#16163F" }}
               >
                 <span className="text-xs text-white/20 font-light">0{i + 1}</span>
                 <h3 className="text-xl font-serif text-white">{title}</h3>
@@ -267,7 +267,7 @@ export default function Home() {
       </section>
 
       {/* How It Works */}
-      <section className="py-24 border-y border-white/10" style={{ backgroundColor: "#1E1F26" }}>
+      <section className="py-24 border-y border-white/10" style={{ backgroundColor: "#16163F" }}>
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -342,7 +342,7 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-24 border-t border-white/10" style={{ backgroundColor: "#1E1F26" }}>
+      <section id="contact" className="py-24 border-t border-white/10" style={{ backgroundColor: "#16163F" }}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16">
             <motion.div
