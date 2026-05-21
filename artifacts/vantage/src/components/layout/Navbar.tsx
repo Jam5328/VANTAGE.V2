@@ -39,20 +39,47 @@ export default function Navbar() {
         </div>
 
         {/* Desktop nav */}
-        <nav
-          className={`hidden md:flex items-center gap-8 text-sm font-light tracking-wide transition-colors duration-300 ${
-            atTop ? "text-white/70" : "text-foreground/50"
-          }`}
-        >
-          <Link href="/services" className="transition-colors duration-200 hover:opacity-100">Services</Link>
-          <Link href="/about" className="transition-colors duration-200 hover:opacity-100">About</Link>
+        <nav className="hidden md:flex items-center gap-8 text-sm tracking-wide">
+          <Link
+            href="/services"
+            className={`transition-colors duration-200 hover:opacity-100 ${
+              atTop
+                ? "text-white font-normal"
+                : "text-foreground/50 font-light hover:text-foreground"
+            }`}
+            style={atTop ? { textShadow: "0 1px 4px rgba(0,0,0,0.5)" } : undefined}
+          >
+            Services
+          </Link>
+          <Link
+            href="/about"
+            className={`transition-colors duration-200 hover:opacity-100 ${
+              atTop
+                ? "text-white font-normal"
+                : "text-foreground/50 font-light hover:text-foreground"
+            }`}
+            style={atTop ? { textShadow: "0 1px 4px rgba(0,0,0,0.5)" } : undefined}
+          >
+            About
+          </Link>
+          <Link
+            href="/pricing"
+            className={`transition-colors duration-200 hover:opacity-100 ${
+              atTop
+                ? "text-white font-normal"
+                : "text-foreground/50 font-light hover:text-foreground"
+            }`}
+            style={atTop ? { textShadow: "0 1px 4px rgba(0,0,0,0.5)" } : undefined}
+          >
+            Pricing
+          </Link>
         </nav>
 
         {/* Enquire CTA */}
         <div className="hidden md:flex items-center">
           <a
             href="/#contact"
-            className="text-sm font-medium tracking-wide px-5 py-2.5 gradient-bg text-white transition-opacity hover:opacity-90"
+            className="text-sm font-medium tracking-wide px-5 py-2 gradient-bg text-white transition-opacity hover:opacity-90"
             data-testid="link-enquire"
           >
             Enquire
@@ -62,7 +89,7 @@ export default function Navbar() {
         {/* Mobile hamburger */}
         <button
           className={`md:hidden transition-colors duration-300 ${
-            atTop ? "text-white/70 hover:text-white" : "text-foreground/60 hover:text-foreground"
+            atTop ? "text-white hover:text-white/80" : "text-foreground/60 hover:text-foreground"
           }`}
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
@@ -78,9 +105,10 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t border-border px-6 py-6 space-y-4 bg-white">
+        <div className="md:hidden border-t border-border px-6 py-5 space-y-4 bg-white">
           <Link href="/services" className="block text-sm text-foreground/60 hover:text-foreground" onClick={() => setOpen(false)}>Services</Link>
           <Link href="/about" className="block text-sm text-foreground/60 hover:text-foreground" onClick={() => setOpen(false)}>About</Link>
+          <Link href="/pricing" className="block text-sm text-foreground/60 hover:text-foreground" onClick={() => setOpen(false)}>Pricing</Link>
           <a href="/#contact" className="block text-sm text-foreground/60 hover:text-foreground" onClick={() => setOpen(false)}>Enquire</a>
         </div>
       )}

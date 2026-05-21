@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 import bristolBw from "@/assets/images/bristol-bw.jpg";
 
 const services = [
@@ -7,24 +8,28 @@ const services = [
     desc: "Comprehensive, legally robust condition reporting establishing the baseline state of a property at the commencement of a tenancy. Each report is structured to serve as admissible evidence in dispute resolution proceedings.",
     useCases: ["New tenancy commencements", "Portfolio acquisition handovers", "HMO and multi-unit properties"],
     benefits: ["DPS-compliant format and structure", "High-resolution photographic evidence", "Meter reading verification", "Room-by-room item logging"],
+    pricingFrom: "From £55",
   },
   {
     title: "360° Property Tours",
     desc: "Immersive spatial documentation capturing every angle of an environment simultaneously. Used for remote marketing, high-value condition evidence, and permanent spatial records of a property's condition.",
     useCases: ["Remote letting and marketing", "High-value condition evidence", "Pre-refurbishment baseline capture"],
     benefits: ["Undeniable spatial context", "Reduced physical viewing requirements", "Premium marketing asset", "Permanent spatial record"],
+    pricingFrom: "From £95",
   },
   {
     title: "Check-In / Check-Out Reports",
     desc: "Detailed comparative analysis against baseline inventories to definitively establish liability at the point of tenancy transition. Designed to withstand adjudicator scrutiny.",
     useCases: ["Tenancy transitions", "Dispute resolution proceedings", "Deposit deduction justification"],
     benefits: ["Clear delineation of fair wear and tear", "Immediate liability highlighting", "Rapid turnaround on request", "Structured for adjudication use"],
+    pricingFrom: "From £35",
   },
   {
     title: "Mid-Term Inspections",
     desc: "Periodic operational checks conducted during active tenancies to monitor condition, compliance, and maintenance requirements. Proactive rather than reactive.",
     useCases: ["Ongoing tenancy management", "Preventative maintenance planning", "Compliance verification"],
     benefits: ["Early issue detection before escalation", "Tenant compliance verification", "Asset condition preservation", "Structured maintenance reporting"],
+    pricingFrom: "From £45",
   },
 ];
 
@@ -33,7 +38,7 @@ export default function Services() {
     <div className="w-full">
 
       {/* Header */}
-      <section className="border-b border-white/10 py-24" style={{ backgroundColor: "#0D0D2A" }}>
+      <section className="border-b border-white/10 py-24 md:py-32" style={{ backgroundColor: "#0D0D2A" }}>
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -44,11 +49,19 @@ export default function Services() {
             <p className="text-xs font-medium uppercase tracking-[0.25em] gradient-text">Our Capabilities</p>
             <h1 className="text-4xl md:text-6xl font-serif text-white">Services</h1>
             <p className="text-lg text-white/55 font-light max-w-2xl leading-relaxed">
-              Structured property documentation services designed to support landlords, letting agents and accommodation operators throughout the full tenancy lifecycle. From inventories and 360 walkthroughs to inspections, check-ins and check-outs, each service is built around clear reporting, reliable visual evidence and organised digital delivery.
+              Structured property documentation services designed to support landlords, letting agents and accommodation operators throughout the full tenancy lifecycle.
             </p>
             <p className="text-base text-white/45 font-light max-w-2xl leading-relaxed">
-              The focus is on creating accurate, professional documentation that helps reduce disputes, improve property visibility and support smoother day-to-day property operations across HMOs, student housing, serviced accommodation and residential rentals.
+              From inventories and 360 walkthroughs to inspections, check-ins and check-outs, each service is built around clear reporting, reliable visual evidence and organised digital delivery.
             </p>
+            <div className="pt-2">
+              <Link
+                href="/pricing"
+                className="inline-flex h-10 items-center justify-center gradient-bg text-white px-7 text-sm font-medium tracking-wide transition-opacity hover:opacity-90"
+              >
+                View Pricing
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -72,6 +85,15 @@ export default function Services() {
                 <div className="md:col-span-4 space-y-4">
                   <h2 className="text-2xl font-serif text-white leading-snug">{srv.title}</h2>
                   <p className="text-sm text-white/55 font-light leading-relaxed">{srv.desc}</p>
+                  <div className="flex items-center gap-4 pt-1">
+                    <span className="text-xs text-white/35 font-light">{srv.pricingFrom}</span>
+                    <Link
+                      href="/pricing"
+                      className="text-xs gradient-text font-medium hover:opacity-80 transition-opacity underline underline-offset-2"
+                    >
+                      See full pricing →
+                    </Link>
+                  </div>
                 </div>
                 <div className="md:col-span-7 grid sm:grid-cols-2 gap-8 md:pl-8">
                   <div className="space-y-4">
@@ -107,6 +129,22 @@ export default function Services() {
         </div>
       </section>
 
+      {/* Pricing CTA band */}
+      <section className="py-14 border-y border-white/10" style={{ backgroundColor: "#0D0D2A" }}>
+        <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div className="space-y-1">
+            <p className="text-xs font-medium uppercase tracking-[0.25em] gradient-text">Pricing</p>
+            <p className="text-white/70 text-sm font-light">Fixed rates by property size. Agency & portfolio packages available.</p>
+          </div>
+          <Link
+            href="/pricing"
+            className="shrink-0 inline-flex h-11 items-center justify-center gradient-bg text-white px-8 text-sm font-medium tracking-wide transition-opacity hover:opacity-90"
+          >
+            Explore Pricing
+          </Link>
+        </div>
+      </section>
+
       {/* CTA — Dispute prevention */}
       <section className="relative h-[55vh] flex items-center justify-center overflow-hidden">
         <img
@@ -123,12 +161,20 @@ export default function Services() {
           <p className="max-w-xl mx-auto text-base text-white/60 font-light leading-relaxed">
             Without a detailed, timestamped inventory and photographic baseline, landlords and agents have almost no recourse at adjudication. Vantage documentation is built specifically to hold up under scrutiny — so when a dispute arises, the evidence is already there.
           </p>
-          <a
-            href="/#contact"
-            className="inline-flex h-11 items-center justify-center gradient-bg text-white px-8 text-sm font-medium tracking-wide transition-opacity hover:opacity-90"
-          >
-            Get Protected
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/#contact"
+              className="inline-flex h-11 items-center justify-center gradient-bg text-white px-8 text-sm font-medium tracking-wide transition-opacity hover:opacity-90"
+            >
+              Get Protected
+            </a>
+            <Link
+              href="/pricing"
+              className="inline-flex h-11 items-center justify-center border border-white/30 text-white/70 px-8 text-sm font-medium tracking-wide transition-colors hover:border-white/60 hover:text-white"
+            >
+              See Service Pricing
+            </Link>
+          </div>
         </div>
       </section>
     </div>
