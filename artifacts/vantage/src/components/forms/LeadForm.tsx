@@ -71,7 +71,7 @@ export default function LeadForm() {
     );
   }
 
-  const whatsappUrl = getWhatsAppUrl("Hi, I've just submitted an enquiry via the VANTAGE website and would like to follow up.");
+  const whatsappUrl = getWhatsAppUrl("Hi, I've just submitted an enquiry via the VIDERO website and would like to follow up.");
 
   return (
     <>
@@ -89,7 +89,7 @@ export default function LeadForm() {
           >
             {/* Icon + heading */}
             <div className="space-y-4">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: "linear-gradient(135deg,#7B2FE8,#3F60F0)" }}>
+              <div className="w-10 h-10 flex items-center justify-center" style={{ background: "linear-gradient(135deg,#7B2FE8,#3F60F0)" }}>
                 <CheckCircle className="w-5 h-5 text-white" strokeWidth={1.5} />
               </div>
               <div className="space-y-2">
@@ -147,6 +147,7 @@ export default function LeadForm() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
+            className="dark-form"
           >
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">

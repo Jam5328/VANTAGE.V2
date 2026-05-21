@@ -56,11 +56,11 @@ export default function Home() {
           >
             <img
               src={vantageIcon}
-              alt="Vantage"
+              alt="Videro"
               className="w-12 h-12 sm:w-20 sm:h-20 md:w-28 md:h-28 object-contain"
             />
             <h1 className="text-5xl sm:text-7xl md:text-9xl font-serif text-white tracking-[0.12em] uppercase leading-none">
-              VANTAGE
+              VIDERO
             </h1>
             <p className="text-xs sm:text-base md:text-lg text-white/60 font-light tracking-[0.2em] uppercase">
               Every detail, professionally captured
@@ -162,7 +162,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="mb-16"
           >
-            <p className="text-xs font-medium uppercase tracking-[0.25em] gradient-text mb-4">Why Vantage</p>
+            <p className="text-xs font-medium uppercase tracking-[0.25em] gradient-text mb-4">Why Videro</p>
             <h2 className="text-3xl md:text-4xl font-serif text-white">Problems We Solve</h2>
           </motion.div>
 
@@ -262,15 +262,6 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-
-          <div className="mt-10 text-center">
-            <Link
-              href="/services"
-              className="inline-flex h-11 items-center justify-center border border-white/20 text-white/70 px-8 text-sm font-medium tracking-wide transition-colors hover:border-white/50 hover:text-white"
-            >
-              View Full Capabilities
-            </Link>
-          </div>
         </div>
       </section>
 
@@ -339,7 +330,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-serif text-white">Built on operational experience</h2>
             <div className="space-y-5">
               <p className="text-sm text-white/60 font-light leading-relaxed">
-                Vantage is not a creative media agency repackaged for property. It is a structured documentation service built by someone with real property management experience and an understanding of how important clear evidence, accurate reporting and reliable records are throughout a tenancy lifecycle.
+                Videro is not a creative media agency repackaged for property. It is a structured documentation service built by someone with real property management experience and an understanding of how important clear evidence, accurate reporting and reliable records are throughout a tenancy lifecycle.
               </p>
               <p className="text-sm text-white/60 font-light leading-relaxed">
                 The focus is simple: produce organised, professional property documentation that landlords, agents and operators can rely on.

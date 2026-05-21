@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Link } from "wouter";
 
 const clientCategories = [
   {
@@ -34,7 +33,7 @@ export default function About() {
               Built on operational experience. Not assumptions.
             </h1>
             <p className="text-lg text-white/55 font-light leading-relaxed">
-              Vantage was founded on years of direct, hands-on operational experience within the UK property sector.
+              Videro was founded on years of direct, hands-on operational experience within the UK property sector.
             </p>
           </motion.div>
         </div>
@@ -64,7 +63,7 @@ export default function About() {
                 After managing thousands of tenancies, handling maintenance, and resolving complex landlord-tenant disputes, I recognised a critical market flaw. Too many operators, landlords, and agents were losing costly disputes simply due to poor, vague, or absent property documentation.
               </p>
               <p>
-                Vantage was built to bridge this gap — replacing creative flair with absolute operational rigour right across the documentation process. Every report, every image, every record is produced with one goal in mind: to protect your asset and your position when it matters most.
+                Videro was built to bridge this gap — replacing creative flair with absolute operational rigour right across the documentation process. Every report, every image, every record is produced with one goal in mind: to protect your asset and your position when it matters most.
               </p>
               <p>
                 We provide a systems-driven methodology that prioritises bulletproof processes over personality. Our reporting is entirely factual, risk-aware, and built defensively to protect both your asset and your operation. Whether you need meticulous check-in reports or forensic mid-term inspections, we deliver an autonomous, highly professional service that requires zero oversight from you.
@@ -165,18 +164,12 @@ export default function About() {
             <p className="text-sm text-white/55 font-light leading-relaxed max-w-xl">
               Do not leave your compliance and asset protection to chance. Get in touch today to secure flawless, legally robust property documentation for your portfolio in Bristol and the surrounding areas.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+            <div className="pt-2">
               <a
                 href="/#contact"
                 className="inline-flex h-11 items-center justify-center gradient-bg text-white px-8 text-sm font-medium tracking-wide transition-opacity hover:opacity-90"
               >
-                Book an Inspection
-              </a>
-              <a
-                href="/#contact"
-                className="inline-flex h-11 items-center justify-center border border-white/20 text-white/70 px-8 text-sm font-medium tracking-wide transition-colors hover:border-white/50 hover:text-white"
-              >
-                Contact Me Directly
+                Get in Touch
               </a>
             </div>
           </motion.div>

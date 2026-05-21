@@ -25,7 +25,7 @@ export default function Navbar() {
         <div className="flex items-end gap-3">
           <img
             src="/src/assets/images/vantage-icon.png"
-            alt="Vantage icon"
+            alt="Videro icon"
             className="w-7 h-7 object-contain object-bottom"
           />
           <Link
@@ -34,7 +34,7 @@ export default function Navbar() {
               atTop ? "text-white" : "text-foreground"
             }`}
           >
-            VANTAGE
+            VIDERO
           </Link>
         </div>
 

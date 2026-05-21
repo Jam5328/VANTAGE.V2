@@ -1,9 +1,11 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import bristolBw from "@/assets/images/bristol-bw.jpg";
 
 const services = [
   {
+    id: "service-01",
     title: "Residential Inventories",
     desc: "Comprehensive, legally robust condition reporting establishing the baseline state of a property at the commencement of a tenancy. Each report is structured to serve as admissible evidence in dispute resolution proceedings.",
     useCases: ["New tenancy commencements", "Portfolio acquisition handovers", "HMO and multi-unit properties"],
@@ -11,6 +13,7 @@ const services = [
     pricingFrom: "From £55",
   },
   {
+    id: "service-02",
     title: "360° Property Tours",
     desc: "Immersive spatial documentation capturing every angle of an environment simultaneously. Used for remote marketing, high-value condition evidence, and permanent spatial records of a property's condition.",
     useCases: ["Remote letting and marketing", "High-value condition evidence", "Pre-refurbishment baseline capture"],
@@ -18,6 +21,7 @@ const services = [
     pricingFrom: "From £95",
   },
   {
+    id: "service-03",
     title: "Check-In / Check-Out Reports",
     desc: "Detailed comparative analysis against baseline inventories to definitively establish liability at the point of tenancy transition. Designed to withstand adjudicator scrutiny.",
     useCases: ["Tenancy transitions", "Dispute resolution proceedings", "Deposit deduction justification"],
@@ -25,6 +29,7 @@ const services = [
     pricingFrom: "From £35",
   },
   {
+    id: "service-04",
     title: "Mid-Term Inspections",
     desc: "Periodic operational checks conducted during active tenancies to monitor condition, compliance, and maintenance requirements. Proactive rather than reactive.",
     useCases: ["Ongoing tenancy management", "Preventative maintenance planning", "Compliance verification"],
@@ -34,6 +39,17 @@ const services = [
 ];
 
 export default function Services() {
+  // Scroll to hash section on mount (e.g. /services#service-01)
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (!hash) return;
+    const el = document.querySelector(hash);
+    if (!el) return;
+    setTimeout(() => {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 100);
+  }, []);
+
   return (
     <div className="w-full">
 
@@ -55,12 +71,12 @@ export default function Services() {
               From inventories and 360 walkthroughs to inspections, check-ins and check-outs, each service is built around clear reporting, reliable visual evidence and organised digital delivery.
             </p>
             <div className="pt-2">
-              <Link
+              <a
                 href="/pricing"
                 className="inline-flex h-10 items-center justify-center gradient-bg text-white px-7 text-sm font-medium tracking-wide transition-opacity hover:opacity-90"
               >
                 View Pricing
-              </Link>
+              </a>
             </div>
           </motion.div>
         </div>
@@ -72,12 +88,14 @@ export default function Services() {
           <div className="space-y-0">
             {services.map((srv, i) => (
               <motion.div
+                id={srv.id}
                 key={i}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
                 className="grid md:grid-cols-12 gap-8 py-16 border-b border-white/10 last:border-0 items-start"
+                style={{ scrollMarginTop: "64px" }}
               >
                 <div className="md:col-span-1">
                   <span className="text-2xl font-serif text-white/15">0{i + 1}</span>
@@ -87,12 +105,12 @@ export default function Services() {
                   <p className="text-sm text-white/55 font-light leading-relaxed">{srv.desc}</p>
                   <div className="flex items-center gap-4 pt-1">
                     <span className="text-xs text-white/35 font-light">{srv.pricingFrom}</span>
-                    <Link
+                    <a
                       href="/pricing"
                       className="text-xs gradient-text font-medium hover:opacity-80 transition-opacity underline underline-offset-2"
                     >
                       See full pricing →
-                    </Link>
+                    </a>
                   </div>
                 </div>
                 <div className="md:col-span-7 grid sm:grid-cols-2 gap-8 md:pl-8">
@@ -136,12 +154,12 @@ export default function Services() {
             <p className="text-xs font-medium uppercase tracking-[0.25em] gradient-text">Pricing</p>
             <p className="text-white/70 text-sm font-light">Fixed rates by property size. Agency & portfolio packages available.</p>
           </div>
-          <Link
+          <a
             href="/pricing"
             className="shrink-0 inline-flex h-11 items-center justify-center gradient-bg text-white px-8 text-sm font-medium tracking-wide transition-opacity hover:opacity-90"
           >
             Explore Pricing
-          </Link>
+          </a>
         </div>
       </section>
 
@@ -159,21 +177,15 @@ export default function Services() {
             Most deposit disputes are lost before they begin
           </h2>
           <p className="max-w-xl mx-auto text-base text-white/60 font-light leading-relaxed">
-            Without a detailed, timestamped inventory and photographic baseline, landlords and agents have almost no recourse at adjudication. Vantage documentation is built specifically to hold up under scrutiny — so when a dispute arises, the evidence is already there.
+            Without a detailed, timestamped inventory and photographic baseline, landlords and agents have almost no recourse at adjudication. Videro documentation is built specifically to hold up under scrutiny — so when a dispute arises, the evidence is already there.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <a
               href="/#contact"
               className="inline-flex h-11 items-center justify-center gradient-bg text-white px-8 text-sm font-medium tracking-wide transition-opacity hover:opacity-90"
             >
-              Get Protected
+              Get in Touch
             </a>
-            <Link
-              href="/pricing"
-              className="inline-flex h-11 items-center justify-center border border-white/30 text-white/70 px-8 text-sm font-medium tracking-wide transition-colors hover:border-white/60 hover:text-white"
-            >
-              See Service Pricing
-            </Link>
           </div>
         </div>
       </section>

@@ -123,3 +123,51 @@
   width: max-content;
   animation: marquee-scroll 28s linear infinite;
 }
+
+/* ── Dark-section form inputs ─────────────────────────────────────────────── */
+/* Applied via .dark-form wrapper on LeadForm within dark-background sections  */
+.dark-form label {
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 300;
+}
+
+.dark-form input,
+.dark-form textarea {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.dark-form input::placeholder,
+.dark-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.dark-form input:focus,
+.dark-form textarea:focus {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.28);
+  outline: none;
+}
+
+/* Select trigger (Radix combobox) in dark sections */
+.dark-form button[role="combobox"] {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.dark-form button[role="combobox"]:focus {
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.dark-form button[role="combobox"] span[data-placeholder] {
+  color: rgba(255, 255, 255, 0.28);
+}
+
+/* Error messages in dark sections */
+.dark-form [role="alert"],
+.dark-form p.text-destructive {
+  color: rgba(255, 120, 120, 0.9);
+}

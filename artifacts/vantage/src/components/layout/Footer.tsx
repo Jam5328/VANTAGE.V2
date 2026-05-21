@@ -8,10 +8,10 @@ export default function Footer() {
           <div className="flex items-center gap-3">
             <img
               src="/src/assets/images/vantage-icon.png"
-              alt="VANTAGE icon"
+              alt="VIDERO icon"
               className="w-6 h-6 object-contain"
             />
-            <h2 className="font-serif text-base tracking-[0.2em] uppercase text-foreground">VANTAGE</h2>
+            <h2 className="font-serif text-base tracking-[0.2em] uppercase text-foreground">VIDERO</h2>
           </div>
           <p className="text-sm text-foreground/50 font-light leading-relaxed max-w-xs">
             Property documentation and visual systems for letting agencies and property managers.
@@ -22,25 +22,37 @@ export default function Footer() {
         <div className="space-y-3 md:space-y-4">
           <h3 className="text-xs font-medium uppercase tracking-widest text-foreground/30">Services</h3>
           <ul className="space-y-2 md:space-y-3 text-sm text-foreground/50 font-light">
-            <li><Link href="/services" className="hover:text-foreground transition-colors">Residential Inventories</Link></li>
-            <li><Link href="/services" className="hover:text-foreground transition-colors">360° Property Tours</Link></li>
-            <li><Link href="/services" className="hover:text-foreground transition-colors">Inspections & Reports</Link></li>
+            <li>
+              <a href="/services#service-01" className="hover:text-foreground transition-colors">Residential Inventories</a>
+            </li>
+            <li>
+              <a href="/services#service-02" className="hover:text-foreground transition-colors">360° Tours</a>
+            </li>
+            <li>
+              <a href="/services#service-03" className="hover:text-foreground transition-colors">Inspections & Reports</a>
+            </li>
           </ul>
         </div>
 
         <div className="space-y-3 md:space-y-4">
           <h3 className="text-xs font-medium uppercase tracking-widest text-foreground/30">Company</h3>
           <ul className="space-y-2 md:space-y-3 text-sm text-foreground/50 font-light">
-            <li><Link href="/about" className="hover:text-foreground transition-colors">About</Link></li>
-            <li><Link href="/pricing" className="hover:text-foreground transition-colors">Pricing</Link></li>
-            <li><a href="/#contact" className="hover:text-foreground transition-colors">Contact</a></li>
+            <li>
+              <a href="/about" className="hover:text-foreground transition-colors">About</a>
+            </li>
+            <li>
+              <a href="/pricing" className="hover:text-foreground transition-colors">Pricing</a>
+            </li>
+            <li>
+              <a href="/#contact" className="hover:text-foreground transition-colors">Contact</a>
+            </li>
           </ul>
         </div>
       </div>
 
       <div className="border-t border-border py-5 text-center">
         <p className="text-xs text-foreground/25 font-light tracking-wide">
-          &copy; {new Date().getFullYear()} VANTAGE Property Systems. All rights reserved.
+          &copy; {new Date().getFullYear()} VIDERO Property Systems. All rights reserved.
         </p>
       </div>
     </footer>

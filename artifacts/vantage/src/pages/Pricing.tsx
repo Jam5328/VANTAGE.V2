@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
-import { Link } from "wouter";
 
 const inventoryPricing = [
   {
@@ -342,19 +341,13 @@ export default function Pricing() {
             <p className="text-sm text-white/55 font-light leading-relaxed max-w-xl">
               Volume discounts and bespoke packages are available for letting agencies, portfolio landlords and serviced accommodation operators. Enquire to receive a tailored proposal.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+            <div className="pt-2">
               <a
                 href="/#contact"
                 className="inline-flex h-11 items-center justify-center gradient-bg text-white px-8 text-sm font-medium tracking-wide transition-opacity hover:opacity-90"
               >
-                Request a Quote
+                Get in Touch
               </a>
-              <Link
-                href="/services"
-                className="inline-flex h-11 items-center justify-center border border-white/20 text-white/70 px-8 text-sm font-medium tracking-wide transition-colors hover:border-white/50 hover:text-white"
-              >
-                View All Services
-              </Link>
             </div>
           </motion.div>
         </div>

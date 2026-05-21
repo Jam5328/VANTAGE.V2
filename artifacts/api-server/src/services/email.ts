@@ -8,7 +8,7 @@
  *
  * Required environment variables:
  *   RESEND_API_KEY    — Your Resend API key (get from resend.com)
- *   RESEND_FROM_EMAIL — Sender address verified with Resend (e.g. "VANTAGE <hello@yourdomain.co.uk>")
+ *   RESEND_FROM_EMAIL — Sender address verified with Resend (e.g. "VIDERO <hello@yourdomain.co.uk>")
  *   BUSINESS_EMAIL    — Your internal notification recipient (e.g. "owner@yourdomain.co.uk")
  */
 
@@ -49,7 +49,7 @@ function autoResponseHtml(name: string): string {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Enquiry Received — VANTAGE</title>
+  <title>Enquiry Received — VIDERO</title>
 </head>
 <body style="margin:0;padding:0;background:#f8f8f8;font-family:'Inter',Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8f8f8;padding:40px 0;">
@@ -59,7 +59,7 @@ function autoResponseHtml(name: string): string {
         <tr>
           <td style="background:#0D0D2A;padding:32px 40px;">
             <p style="margin:0;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.4);font-weight:400;">Property Documentation</p>
-            <p style="margin:6px 0 0;font-size:18px;letter-spacing:6px;text-transform:uppercase;color:#ffffff;font-family:Georgia,serif;font-weight:400;">VANTAGE</p>
+            <p style="margin:6px 0 0;font-size:18px;letter-spacing:6px;text-transform:uppercase;color:#ffffff;font-family:Georgia,serif;font-weight:400;">VIDERO</p>
           </td>
         </tr>
         <!-- Body -->
@@ -82,7 +82,7 @@ function autoResponseHtml(name: string): string {
         <!-- Footer -->
         <tr>
           <td style="border-top:1px solid #f0f0f0;padding:24px 40px;">
-            <p style="margin:0;font-size:11px;color:#aaa;font-weight:300;line-height:1.6;">VANTAGE Property Systems · Bristol, United Kingdom<br/>This is an automated confirmation. Please do not reply to this email.</p>
+            <p style="margin:0;font-size:11px;color:#aaa;font-weight:300;line-height:1.6;">VIDERO Property Systems · Bristol, United Kingdom<br/>This is an automated confirmation. Please do not reply to this email.</p>
           </td>
         </tr>
       </table>
@@ -96,12 +96,12 @@ function internalNotificationHtml(lead: LeadEmailData, timestamp: string): strin
   return `
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8" /><title>New Lead — VANTAGE</title></head>
+<head><meta charset="UTF-8" /><title>New Lead — VIDERO</title></head>
 <body style="margin:0;padding:40px 0;background:#f8f8f8;font-family:'Inter',Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0"><tr><td align="center">
     <table width="520" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e8e8e8;">
       <tr><td style="background:#0D0D2A;padding:24px 32px;">
-        <p style="margin:0;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.5);">VANTAGE</p>
+        <p style="margin:0;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.5);">VIDERO</p>
         <p style="margin:4px 0 0;font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;">New Enquiry Received</p>
       </td></tr>
       <tr><td style="padding:32px;">
@@ -146,13 +146,13 @@ export async function sendLeadEmails(lead: LeadEmailData): Promise<void> {
    *   resend.emails.send({
    *     from: process.env.RESEND_FROM_EMAIL!,
    *     to: [lead.email],
-   *     subject: "Enquiry Received — VANTAGE Property Documentation",
+   *     subject: "Enquiry Received — VIDERO Property Documentation",
    *     html: autoResponseHtml(lead.name),
    *   }),
    *   resend.emails.send({
    *     from: process.env.RESEND_FROM_EMAIL!,
    *     to: [process.env.BUSINESS_EMAIL!],
-   *     subject: `New VANTAGE Enquiry — ${lead.name}`,
+   *     subject: `New VIDERO Enquiry — ${lead.name}`,
    *     html: internalNotificationHtml(lead, timestamp),
    *   }),
    * ]);
