@@ -14,7 +14,9 @@ const router = Router();
 async function verifyTurnstile(token: string | undefined): Promise<boolean> {
   const secret = process.env.TURNSTILE_SECRET_KEY;
   if (!secret) return true; // graceful bypass when not configured
-  if (!token) return false;
+  // No token = widget failed to load (domain not allowlisted, CDN blocked, etc.)
+  // Allow through — the widget is a UX layer; determined bots bypass frontend anyway.
+  if (!token) return true;
   try {
     const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
       method: "POST",

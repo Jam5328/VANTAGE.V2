@@ -75,6 +75,7 @@
     "zod": "catalog:"
   },
   "dependencies": {
+    "@marsidev/react-turnstile": "^1.5.2",
     "posthog-js": "^1.374.2"
   }
 }

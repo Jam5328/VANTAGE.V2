@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle, ExternalLink } from "lucide-react";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { useSubmitLead } from "@workspace/api-client-react";
+import type { LeadInput } from "@workspace/api-client-react";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -13,6 +15,8 @@ import { Button } from "@/components/ui/button";
 import { DemoModal } from "@/components/ui/DemoModal";
 import { getWhatsAppUrl, WHATSAPP_ENABLED } from "@/lib/whatsapp";
 import { trackEvent } from "@/lib/analytics";
+
+const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined;
 
 const clientTypeOptions = [
   { value: "letting_agency", label: "Letting Agency" },
@@ -37,6 +41,9 @@ type LeadFormValues = z.infer<typeof leadFormSchema>;
 export default function LeadForm() {
   const [success, setSuccess] = useState(false);
   const [demoOpen, setDemoOpen] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
+  const [turnstileErrored, setTurnstileErrored] = useState(false);
+  const turnstileRef = useRef<TurnstileInstance>(null);
   const submitLead = useSubmitLead();
 
   const form = useForm<LeadFormValues>({
@@ -50,28 +57,41 @@ export default function LeadForm() {
   });
 
   function onSubmit(data: LeadFormValues) {
+    const body: LeadInput & { cf_turnstile_response?: string } = {
+      name: data.name,
+      email: data.email,
+      company: data.company ?? null,
+      clientType: data.clientType,
+      message: data.message ?? null,
+      sourcePage: "home",
+    };
+
+    if (TURNSTILE_SITE_KEY && turnstileToken) {
+      body.cf_turnstile_response = turnstileToken;
+    }
+
     submitLead.mutate(
-      {
-        data: {
-          name: data.name,
-          email: data.email,
-          company: data.company ?? null,
-          clientType: data.clientType,
-          message: data.message ?? null,
-          sourcePage: "home",
-        },
-      },
+      { data: body as LeadInput },
       {
         onSuccess: () => {
           setSuccess(true);
           form.reset();
+          setTurnstileToken("");
+          setTurnstileErrored(false);
           trackEvent("enquiry_submitted", { clientType: data.clientType, sourcePage: "home" });
+        },
+        onError: () => {
+          turnstileRef.current?.reset();
+          setTurnstileToken("");
         },
       }
     );
   }
 
   const whatsappUrl = getWhatsAppUrl("Hi, I've just submitted an enquiry via the VIDERO website and would like to follow up.");
+
+  // Ready when: no key configured, token received, OR widget errored (graceful degradation)
+  const turnstileReady = !TURNSTILE_SITE_KEY || !!turnstileToken || turnstileErrored;
 
   return (
     <>
@@ -239,10 +259,24 @@ export default function LeadForm() {
                   )}
                 />
 
+                {/* Turnstile widget — only renders when site key is configured and widget hasn't errored */}
+                {TURNSTILE_SITE_KEY && !turnstileErrored && (
+                  <div>
+                    <Turnstile
+                      ref={turnstileRef}
+                      siteKey={TURNSTILE_SITE_KEY}
+                      onSuccess={(token) => { setTurnstileToken(token); setTurnstileErrored(false); }}
+                      onExpire={() => setTurnstileToken("")}
+                      onError={() => { setTurnstileToken(""); setTurnstileErrored(true); }}
+                      options={{ theme: "dark", size: "normal", retry: "never" }}
+                    />
+                  </div>
+                )}
+
                 <Button
                   type="submit"
                   className="w-full"
-                  disabled={submitLead.isPending}
+                  disabled={submitLead.isPending || !turnstileReady}
                   data-testid="button-submit"
                 >
                   {submitLead.isPending ? "Submitting..." : "Submit Details"}
