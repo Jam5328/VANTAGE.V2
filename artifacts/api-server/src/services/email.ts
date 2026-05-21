@@ -12,7 +12,7 @@
  *   BUSINESS_EMAIL    — Your internal notification recipient (e.g. "owner@yourdomain.co.uk")
  */
 
-// import { Resend } from "resend";
+import { Resend } from "resend";
 
 interface LeadEmailData {
   name: string;
@@ -136,25 +136,27 @@ export async function sendLeadEmails(lead: LeadEmailData): Promise<void> {
     return;
   }
 
-  /**
-   * Uncomment when resend is installed and env vars are configured:
-   *
-   * const resend = new Resend(process.env.RESEND_API_KEY);
-   * const timestamp = new Date().toLocaleString("en-GB", { timeZone: "Europe/London" });
-   *
-   * await Promise.allSettled([
-   *   resend.emails.send({
-   *     from: process.env.RESEND_FROM_EMAIL!,
-   *     to: [lead.email],
-   *     subject: "Enquiry Received — VIDERO Property Documentation",
-   *     html: autoResponseHtml(lead.name),
-   *   }),
-   *   resend.emails.send({
-   *     from: process.env.RESEND_FROM_EMAIL!,
-   *     to: [process.env.BUSINESS_EMAIL!],
-   *     subject: `New VIDERO Enquiry — ${lead.name}`,
-   *     html: internalNotificationHtml(lead, timestamp),
-   *   }),
-   * ]);
-   */
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const timestamp = new Date().toLocaleString("en-GB", { timeZone: "Europe/London" });
+
+  const results = await Promise.allSettled([
+    resend.emails.send({
+      from: process.env.RESEND_FROM_EMAIL!,
+      to: [lead.email],
+      subject: "Enquiry Received — VIDERO Property Documentation",
+      html: autoResponseHtml(lead.name),
+    }),
+    resend.emails.send({
+      from: process.env.RESEND_FROM_EMAIL!,
+      to: [process.env.BUSINESS_EMAIL!],
+      subject: `New VIDERO Enquiry — ${lead.name}`,
+      html: internalNotificationHtml(lead, timestamp),
+    }),
+  ]);
+
+  results.forEach((result, i) => {
+    if (result.status === "rejected") {
+      console.error(`[Email] Failed to send email ${i + 1}:`, result.reason);
+    }
+  });
 }
