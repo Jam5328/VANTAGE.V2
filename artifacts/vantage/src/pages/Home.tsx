@@ -47,7 +47,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pt-20 sm:pt-24 md:pt-28 text-center space-y-5 sm:space-y-8">
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pt-16 sm:pt-20 md:pt-24 text-center space-y-5 sm:space-y-8">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -62,7 +62,7 @@ export default function Home() {
             <h1 className="text-5xl sm:text-7xl md:text-9xl font-serif text-white tracking-[0.12em] uppercase leading-none">
               VIDERO
             </h1>
-            <p className="text-xs sm:text-base md:text-lg text-white/60 font-light tracking-[0.2em] uppercase">
+            <p className="-mt-1.5 sm:-mt-2.5 text-xs sm:text-base md:text-lg text-white/60 font-light tracking-[0.2em] uppercase">
               Every detail, professionally captured
             </p>
           </motion.div>
