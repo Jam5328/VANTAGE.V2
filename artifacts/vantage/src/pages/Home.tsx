@@ -33,7 +33,7 @@ export default function Home() {
     <div className="w-full">
 
       {/* Hero */}
-      <section ref={heroRef} className="relative h-dvh flex items-start justify-center overflow-hidden">
+      <section ref={heroRef} className="relative h-dvh flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src={bristolAerial}
@@ -47,7 +47,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pt-20 sm:pt-24 md:pt-28 text-center space-y-5 sm:space-y-8">
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 text-center space-y-5 sm:space-y-8">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
